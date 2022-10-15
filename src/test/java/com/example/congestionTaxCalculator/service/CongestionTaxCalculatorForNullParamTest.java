@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -26,9 +27,8 @@ public class CongestionTaxCalculatorForNullParamTest {
     }
 
     @BeforeAll
-    private static void initDate() {
+    public static void initDate() {
         date = LocalDate.of(2022, 8, 17);
-
     }
 
 
@@ -39,7 +39,7 @@ public class CongestionTaxCalculatorForNullParamTest {
                 () -> cal.getTollTax(null,
                         List.of(LocalDateTime.of(date, LocalTime.of(6, 0)))
                                 ));
-        assertEquals(VEHICLE_NULL_MSG, re.getMessage());
+        assertEquals("vehicle is marked non-null but is null", re.getMessage());
     }
 
 
@@ -48,7 +48,7 @@ public class CongestionTaxCalculatorForNullParamTest {
     public void nullParamDatesTest() {
         RuntimeException re = assertThrows(RuntimeException.class,
                 () -> cal.getTollTax(new Car().getVehicle(), null));
-        assertEquals(DATES_NULL_MSG, re.getMessage());
+        assertEquals("dates is marked non-null but is null", re.getMessage());
     }
 
 

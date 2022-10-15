@@ -5,12 +5,12 @@ import com.example.congestionTaxCalculator.dto.TimeIntervalFee;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +24,6 @@ public class ValidateCongestionTaxService {
 
     public boolean isTollFreeVehicle(VehicleType vehicle) {
         return Optional.ofNullable(tollFreeVehicle.contains(vehicle)).orElse(false);
-
     }
 
     //this method will check weather requested date is a toll free date
@@ -44,15 +43,8 @@ public class ValidateCongestionTaxService {
 
         LOG.info(" Call to validateInputs");
 
-        Optional.ofNullable(vehicle).orElseThrow(() -> new RuntimeException(VEHICLE_NULL_MSG));
-
-
         if (isTollFreeVehicle(vehicle)) {
             return false;
-        }
-
-        if (dates == null || CollectionUtils.isEmpty(List.of(dates))) {
-            throw new RuntimeException(DATES_NULL_MSG);
         }
 
         //this will throw an exception if list will contain multiple days
@@ -66,10 +58,11 @@ public class ValidateCongestionTaxService {
             return false;
         }
 
-        LOG.info("Inputs validated successfully");
+        LOG.info("vehicle, date and time  validated successfully");
         return true;
     }
 
+    //this method will fetch toll amount from Yaml file with respective to time of travel
     public double getFee(LocalTime time) {
         return timeFeeList.stream()
                 .filter(timeFee -> isMatched(timeFee, time))

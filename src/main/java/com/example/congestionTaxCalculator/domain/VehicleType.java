@@ -7,7 +7,6 @@ public enum VehicleType {
     DIPLOMAT,
     FOREIGN,
     MILITARY,
-
     CAR
 
 }

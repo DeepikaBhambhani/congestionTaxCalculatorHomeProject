@@ -25,9 +25,9 @@ class CongestionTaxCalculatorServiceTest {
     private static List<LocalDateTime> dates;
 
     @BeforeAll
-    private static void initialiseDate(){
+    public static void initialiseDate(){
         cal=new CongestionTaxCalculatorService();
-        date= LocalDate.of(LocalDate.now().getYear(),LocalDate.now().getMonth(),LocalDate.now().getDayOfMonth());
+        date= LocalDate.of(LocalDate.now().getYear(),10,13);
     }
 
     @Test

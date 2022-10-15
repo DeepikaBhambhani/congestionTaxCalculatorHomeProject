@@ -1,9 +1,9 @@
 package com.example.congestionTaxCalculator.service;
 
 import com.example.congestionTaxCalculator.domain.VehicleType;
+import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
@@ -24,8 +24,10 @@ public class CongestionTaxCalculatorService {
     private ValidateCongestionTaxService calService=new ValidateCongestionTaxService();
 
     //this method will valid all the inputs and calculate toll respectively
-    public int getTollTax(VehicleType vehicle, List<LocalDateTime> dates) {
+    public int getTollTax(@NonNull VehicleType vehicle, @NonNull List<LocalDateTime> dates) {
+
         LOG.info("getTollTax method started");
+
         //this method will validate all the input parameters
         if (!calService.validateInputs(vehicle, dates)) {
             return 0;
@@ -39,7 +41,7 @@ public class CongestionTaxCalculatorService {
         if (sortedTimeList.isEmpty()) {
             return 0;
         }
-        LOG.info("Calculating toll tax for the sorted list");
+        LOG.info("Calculating toll tax for sorted list");
         LocalTime intervalStart = sortedTimeList.get(0);
         int totalFee = 0;
         for (LocalTime date : sortedTimeList) {
