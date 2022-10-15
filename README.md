@@ -12,10 +12,15 @@ If in an hour a vehicle is charged two times or more than one time then maximum 
 Project Structure : 
 Project is created in spring boot and testing is done using Junit.
 There are in total 5 packages in source package
+
   1.service : This package contains two service classes where whole business logic and validation is done.
+  
   2.dto : These are data transfer objects created to fetch data from YAML file and to fetch request body.
+  
   3.domain : This package consist of all model objects
+  
   4.controller : This package has rest controller which calls services created in service package
+  
   5.config : classes created in this package consist of configuration properties which are required and configured at the time of server start up and some constants
   
   TEST Package :
