@@ -44,6 +44,25 @@ class CongestionTaxControllerTest {
         dates=new ArrayList<>();
     }
 
+    @Test
+    @DisplayName("Testing rest controller")
+    public void testController() throws Exception {
+        dates=getDateTime();
+        GetRequestBodyDto dto = getDto();
+
+        mapper.registerModule(new JavaTimeModule());
+        String taxJson = mapper.writeValueAsString(dto);
+
+        MockHttpServletRequestBuilder reqBuilder = MockMvcRequestBuilders.post("/tax")
+                .contentType(MediaType.APPLICATION_JSON).content(taxJson);
+        ResultActions action = mockMvc.perform(reqBuilder).andDo(print());
+        MvcResult mvcResult = action.andReturn();
+        MockHttpServletResponse response = mvcResult.getResponse();
+        int status = response.getStatus();
+        assertEquals(200, status);
+
+    }
+
     public List<LocalDateTime> getDateTime() {
         date = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonth(), LocalDate.now().getDayOfMonth());
         dates.add(LocalDateTime.of(date, LocalTime.of(17, 0)));
@@ -58,27 +77,6 @@ class CongestionTaxControllerTest {
                 .vehicleType(new Car().getVehicle())
                 .dateTimes(dates)
                 .build();
-    }
-
-    @Test
-    @DisplayName("Testing rest controller")
-    public void testController() throws Exception {
-        dates=getDateTime();
-
-        GetRequestBodyDto dto = getDto();
-
-        mapper.registerModule(new JavaTimeModule());
-        String taxJson = mapper.writeValueAsString(dto);
-
-        MockHttpServletRequestBuilder reqBuilder = MockMvcRequestBuilders.post("/tax")
-                .contentType(MediaType.APPLICATION_JSON).content(taxJson);
-
-        ResultActions action = mockMvc.perform(reqBuilder).andDo(print());
-        MvcResult mvcResult = action.andReturn();
-        MockHttpServletResponse response = mvcResult.getResponse();
-        int status = response.getStatus();
-        assertEquals(200, status);
-
     }
 
 
