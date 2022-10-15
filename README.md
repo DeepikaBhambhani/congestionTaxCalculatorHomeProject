@@ -17,7 +17,7 @@ There are in total 5 packages in source package
   5.config : classes created in this package consist of configuration properties which are required and configured at the time of server start up and some constants
   
   TEST Package :
-  1. controller : Test cases related to controller classes are written. Also please refer to Postman_AWS_Unit_Test_Case.docx file.
+  1. controller : Test cases related to controller classes are written. Also please refer to Postman_AWS_Test_Case.docx file.
   2. service : Unit test cases of service classes.
   
   Application is also deployed on AWS so we can test using postman.
