@@ -28,3 +28,5 @@ There are in total 5 packages in source package
   2. service : Unit test cases of service classes.
   
   Application is also deployed on AWS so we can test using postman.
+  
+  Added docker file, we can build docker image and run the application 
