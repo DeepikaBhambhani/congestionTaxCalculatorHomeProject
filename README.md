@@ -1,5 +1,5 @@
 # congestionTaxCalculator
-Home Assignment from VCC : Congestion Tax Calculator. Restfull webservice calculates tolls of vehicle travelling each day. 
+Home project : Congestion Tax Calculator. Restfull webservice calculates tolls of vehicle travelling each day. 
 
 
 Description : 
