@@ -1,4 +1,4 @@
-package com.example.congestionTaxCalculator.config;
+package com.example.congestionTaxCalculator.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
