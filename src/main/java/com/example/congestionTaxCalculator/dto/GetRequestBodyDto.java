@@ -12,11 +12,9 @@ import java.util.List;
 @Data
 public class GetRequestBodyDto {
     @Getter
-    @NonNull
     public VehicleType vehicleType;
 
     @Getter
-    @NonNull
     public List<LocalDateTime> dateTimes;
 
 

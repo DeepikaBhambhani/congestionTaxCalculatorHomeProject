@@ -2,6 +2,8 @@ package com.example.congestionTaxCalculator.service;
 
 import com.example.congestionTaxCalculator.domain.VehicleType;
 import com.example.congestionTaxCalculator.dto.TimeIntervalFee;
+import com.example.congestionTaxCalculator.handler.DateTimeNull;
+import com.example.congestionTaxCalculator.handler.VehicleTypeNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -23,6 +25,9 @@ public class ValidateCongestionTaxService {
     private static final Logger LOG = LoggerFactory.getLogger(CongestionTaxCalculatorService.class);
 
     public boolean isTollFreeVehicle(VehicleType vehicle) {
+        if(vehicle==null)
+            throw new VehicleTypeNull(VEHICLE_NULL);
+
         return Optional.ofNullable(tollFreeVehicle.contains(vehicle)).orElse(false);
     }
 
@@ -45,6 +50,10 @@ public class ValidateCongestionTaxService {
 
         if (isTollFreeVehicle(vehicle)) {
             return false;
+        }
+
+        if(dates==null || dates.equals("")){
+            throw new DateTimeNull(DATE_TIME_NULL_EMPTY);
         }
 
         //this will throw an exception if list will contain multiple days

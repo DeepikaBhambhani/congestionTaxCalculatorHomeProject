@@ -2,7 +2,6 @@ package com.example.congestionTaxCalculator.controller;
 
 import com.example.congestionTaxCalculator.dto.GetRequestBodyDto;
 import com.example.congestionTaxCalculator.service.CongestionTaxCalculatorService;
-import com.example.congestionTaxCalculator.service.ValidateCongestionTaxService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

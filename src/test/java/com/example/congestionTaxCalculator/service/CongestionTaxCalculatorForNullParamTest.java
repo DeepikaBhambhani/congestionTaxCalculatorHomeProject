@@ -39,7 +39,7 @@ public class CongestionTaxCalculatorForNullParamTest {
                 () -> cal.getTollTax(null,
                         List.of(LocalDateTime.of(date, LocalTime.of(6, 0)))
                                 ));
-        assertEquals("vehicle is marked non-null but is null", re.getMessage());
+        assertEquals(VEHICLE_NULL, re.getMessage());
     }
 
 
@@ -48,7 +48,7 @@ public class CongestionTaxCalculatorForNullParamTest {
     public void nullParamDatesTest() {
         RuntimeException re = assertThrows(RuntimeException.class,
                 () -> cal.getTollTax(new Car().getVehicle(), null));
-        assertEquals("dates is marked non-null but is null", re.getMessage());
+        assertEquals(DATE_TIME_NULL_EMPTY, re.getMessage());
     }
 
 

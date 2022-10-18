@@ -24,7 +24,7 @@ public class CongestionTaxCalculatorService {
     private ValidateCongestionTaxService calService=new ValidateCongestionTaxService();
 
     //this method will valid all the inputs and calculate toll respectively
-    public int getTollTax(@NonNull VehicleType vehicle, @NonNull List<LocalDateTime> dates) {
+    public int getTollTax(VehicleType vehicle, List<LocalDateTime> dates) {
 
         LOG.info("getTollTax method started");
 
